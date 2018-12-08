@@ -43,10 +43,10 @@ if($service == "kismet") {
         start_monitor_mode($io_in_iface_extra);
         
         $exec = "$bin_kismet_server -p $mod_logs_history -s --daemonize -c mon0 > /dev/null &";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     } else if($action == "stop") {
         $exec = "$bin_killall $bin_kismet_server";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     }
 }
 
@@ -54,20 +54,20 @@ if($service == "gpsd") {
     if ($action == "start") {
         $exec = "$bin_gpsd /dev/ttyUSB0 &";
 		$exec = "/etc/init.d/gpsd restart";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     } else if($action == "stop") {
         $exec = "$bin_killall gpsd";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     }
 }
 
 if ($install == "install_kismet") {
 
     $exec = "chmod 755 install.sh";
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     header('Location: ../../install.php?module=kismet');
     exit;

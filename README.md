@@ -1,4 +1,4 @@
 module_kismet
 =============
 
-FruityWifi kismet module
+BlackBulb kismet module

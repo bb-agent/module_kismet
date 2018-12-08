@@ -37,33 +37,33 @@ if ($file == "all") {
     for ($i = 0; $i < count($logs); $i++) {
 		//$exec = "$bin_giskismet --database $mod_logs_history/wireless.dbl -x $mod_logs_history/*.netxml";
 		$exec = "$bin_giskismet --database $mod_logs_history/wireless.dbl -x " . $logs[$i];
-		exec_fruitywifi($exec);
+		exec_blackbulb($exec);
 	}
     $exec = "$bin_giskismet --database $mod_logs_history/wireless.dbl -q 'select * from wireless' -o $mod_logs_history/output_all.kml";
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 } else {
     if ($action == "delete") {
         $exec = "$bin_rm $mod_logs_history/$file.netxml";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_rm $mod_logs_history/$file.pcapdump";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_rm $mod_logs_history/$file.alert";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_rm $mod_logs_history/$file.gpsxml";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_rm $mod_logs_history/$file.nettxt";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_rm $mod_logs_history/$file.kml";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     } else {
         $exec = "$bin_rm $mod_logs_history/wireless.dbl";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_giskismet --database $mod_logs_history/wireless.dbl -x $mod_logs_history/$file.netxml";
 		echo $exec . "<br>";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         $exec = "$bin_giskismet --database $mod_logs_history/wireless.dbl -q 'select * from wireless' -o $mod_logs_history/output_$file.kml";
 		echo $exec . "<br>";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     }
 }
 
